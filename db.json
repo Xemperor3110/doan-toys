@@ -1,0 +1,14 @@
+{
+    "users": [
+      {
+        "email": "toy@gmail.com",
+        "password": "adim3110!",
+        "id":"adminServer"
+      },
+      {
+        "email": "lehung@gmail.com",
+        "password": "hung123123@",
+        "id": "adminServer2"
+      }
+    ]
+  }
