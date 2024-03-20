@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import Logo from '../assets/image/logo.png';
+import Logo from '../assets/image/logo.png'
 import Menu from './Menu';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,11 +18,13 @@ function Header (){
         	className={'h-[70px] w-[1440px] max-w-full flex flex-row items-center justify-between'}
 		>
             <Link to="/">
-                <image scr={Logo} alt="" className="h-[50px] w-[150px]" />
+                <img src={Logo} alt="" className="h-[150px] w-[200px] " />
             </Link>
             <div className="space-x-[80px]">
+				<Menu href="/product" label="Product" />
 				<Menu href="/contact" label="Contact" />
 				<Menu href="/about-us" label="About Us" />
+				{email && <Menu href="/admin/posts" label="Admin" />}
 			</div>
 
             {!!email ? (

@@ -8,6 +8,8 @@ export default function PostCreate() {
 	const postId = params.postId;
 	const [name, setName] = useState('');
 	const [photo, setPhoto] = useState('');
+	const [money, setMoney] = useState('');
+	const [type, setType] = useState('')
 
 	useEffect(() => {
 		getPostById();
@@ -19,6 +21,8 @@ export default function PostCreate() {
 			.then((response) => {
 				setName(response.name);
 				setPhoto(response.photo);
+				setMoney(response.money);
+				setType(response.type);
 			})
 			.catch((error) => {});
 	};
@@ -35,15 +39,17 @@ export default function PostCreate() {
 		fetch(`http://localhost:3110/posts/` + postId, {
 			method: 'PATCH',
 			body: JSON.stringify({
+				type,
 				name,
 				photo,
+				money,
 			}),
 		})
 			.then((raw) => raw.json())
 			.then((response) => {
 				if (response) {
 					alert('Update Post Successful');
-					navigate('/admin/post');
+					navigate('/admin/posts');
 				}
 			})
 			.catch((error) => {
@@ -54,6 +60,12 @@ export default function PostCreate() {
 	return (
 		<div className="flex items-center justify-center">
 			<form className="w-[420px] min-h-[580px] p-[40px] ">
+				<input 
+					className="w-full h-10 border-gray-300 rounded px-[14px]"
+					placeholder="Loại"
+					value={type}
+					onChange={(event) => setType(event.target.value)}
+				/>
 				<input
 					className="w-full h-10 border border-gray-300 rounded px-[14px]"
 					placeholder="Name"
@@ -65,6 +77,12 @@ export default function PostCreate() {
 					placeholder="Photo"
 					value={photo}
 					onChange={(event) => setPhoto(event.target.value)}
+				/>
+				<input 
+					className="w-full h-10 border border-gray-300 rounded px-[14px]"
+					placeholder="Giá"
+					value={money}
+					onChange={(event) => setMoney(event.target.value)}
 				/>
 
 				<button

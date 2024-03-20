@@ -37,7 +37,7 @@ export default function Posts() {
 			<div className="py-4 flex flex-row justify-between items-center">
 				<h2>Admin / Posts</h2>
 				<Link
-					to="/admin/post/create"
+					to="/admin/posts/create"
 					className="bg-[#FA8443] rounded-lg h-[46px] px-4 text-white flex items-center justify-center	"
 				>
 					Create Post
@@ -47,8 +47,10 @@ export default function Posts() {
 				<thead>
 					<tr>
 						<th>ID</th>
+						<th>Loại</th>
 						<th>Name</th>
 						<th>Photo</th>
+						<th>Giá</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -56,12 +58,14 @@ export default function Posts() {
 					{listPosts.map((post) => (
 						<tr>
 							<td className="text-center">{post.id}</td>
+							<td className="text-center">{post.type}</td>
 							<td className="text-center">{post.name}</td>
 							<td className="line-clamp-1 w-[300px]">
 								{post.photo}
 							</td>
+							<td className="text-center">{post.money}</td>
 							<td className="text-center space-x-4">
-								<Link to={'/admin/post/edit/' + post.id}>
+								<Link to={'/admin/posts/edit/' + post.id}>
 									Edit
 								</Link>
 								<button onClick={() => onDelete(post.id)}>

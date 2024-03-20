@@ -1,10 +1,10 @@
-import Search from '../components/Search';
-import Content from '../components/Content'
+import Banner from '../components/Banner';
+import Session1 from '../components/Session';
 function App(){
     return (
         <>
-            <Search />
-            <Content />
+            <Banner title="Ejoy Your Hobby" />
+			<Session1 />
         </>
     )
 }

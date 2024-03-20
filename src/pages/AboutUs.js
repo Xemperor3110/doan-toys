@@ -1,6 +1,11 @@
+import Banner from '../components/Banner';
+import Session1 from '../components/Session';
+
 function App() {
 	return (
 		<>
+            <Banner title="About Us" />
+			
             <h1>X-Toys Shop: Uy tín là do tự bạn đánh giá</h1>
 			<p>
                 - Shop nhận đặt hàng các dòng đồ chơi của Tokusatsu-Anime.
