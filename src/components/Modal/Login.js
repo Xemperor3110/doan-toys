@@ -59,7 +59,7 @@ export default memo(function Login() {
 				</Form.Item>
 
 				<Button type="primary" htmlType="submit" loading={fetching}>
-					Login
+					Đăng Nhập
 				</Button>
 			</Form>
 		</div>
