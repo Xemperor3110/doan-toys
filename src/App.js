@@ -1,58 +1,47 @@
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { store, persistor } from './stores/store';
 import React from 'react';
-import './assets/css/index.css'
 import Home from './pages/Home';
-import AboutUs from './pages/AboutUs';
-import Contact from './pages/Contact';
+import { Provider } from 'react-redux';
+import { persistor, store } from './store';
+import {
+	createBrowserRouter,
+	RouterProvider,
+	createRoutesFromElements,
+	Route,
+} from 'react-router-dom';
 import Layout from './components/Layout';
-import AuthLayout from './components/AuthLayout'
-import Product from './pages/Product';
-import ProductDetail from './pages/ProductDetail'
+import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
 import Login from './pages/Login';
-import Register from './pages/Register';
-import Admin from './pages/Admin';
-import Posts from './pages/Post'
-import PostCreate from './pages/PostCreate';
-import PostEdit from './pages/PostEdit'
+import { PersistGate } from 'redux-persist/integration/react';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import OrderHistory from './pages/OrderHistory';
+import { ROUTERS } from './constants/Routers';
+import Profile from './pages/Profile';
 
-export default function App (){
-    return (
-        <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-                <BrowserRouter>
-                    <Routes>
-                    <Route path="/" element={<Layout />}>
-							<Route index element={<Home />} />
-							<Route path="contact" element={<Contact />} />
-							<Route path="product" element={<Product />} />
-							<Route
-								path="product/:productName"
-								element={<ProductDetail />}
-							/>
-							<Route path="about-us" element={<AboutUs />} />
-							<Route path="admin" element={<Admin />}>
-                                <Route path="posts" element={<Posts />} />
-								<Route
-									path="posts/create"
-									element={<PostCreate />}
-								/>
-								<Route
-									path="posts/edit/:postId"
-									element={<PostEdit />}
-								/>
-							</Route>
+const router = createBrowserRouter(
+	createRoutesFromElements(
+		<Route path="/" element={<Layout />}>
+			<Route index element={<Home />} />
+			<Route path={ROUTERS.CART} element={<Cart />} />
+			<Route path={ROUTERS.CHECKOUT} element={<Checkout />} />
+			<Route path={ROUTERS.PRODUCTS} element={<Products />} />
+			<Route path={ROUTERS.PRODUCT_DETAIL} element={<ProductDetail />} />
+			<Route path={ROUTERS.LOGIN} element={<Login />} />
+			<Route path={ROUTERS.PROFILE} element={<Profile />} />
+			<Route path={ROUTERS.ORDER_HISTORY} element={<OrderHistory />} />
+		</Route>
+	)
+);
 
-							<Route element={<AuthLayout />}>
-								<Route path="login" element={<Login />} />
-								<Route path="register" element={<Register />} />
-							</Route>
-						</Route>
-                    </Routes>
-                </BrowserRouter>
-            </PersistGate>
-        </Provider>
-    )
-}
+const App = () => {
+	return (
+		<Provider store={store}>
+			<PersistGate loading={null} persistor={persistor}>
+				<RouterProvider router={router} />
+			</PersistGate>
+		</Provider>
+	);
+};
+
+export default App;

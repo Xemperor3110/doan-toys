@@ -1,0 +1,28 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+body {
+	margin: 0;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #000a12;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
+main {
+	background-image: linear-gradient(
+		226.69deg,
+		#e5f8ff8c 38.63%,
+		#f9e0b014 82.88%
+	);
+	min-height: calc(100vh - 75px);
+}
+a {
+	color: inherit !important;
+	text-decoration: inherit !important;
+}

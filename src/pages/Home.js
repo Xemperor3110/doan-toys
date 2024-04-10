@@ -1,11 +1,12 @@
-import Banner from '../components/Banner';
-import Session1 from '../components/Session';
-function App(){
-    return (
-        <>
-            <Banner title="Ejoy Your Hobby" />
-			<Session1 />
-        </>
-    )
-}
-export default App;
+import React from 'react';
+import List from '../components/ListProduct';
+
+const Home = () => {
+	return (
+		<div className="">
+			<List />
+		</div>
+	);
+};
+
+export default Home;
